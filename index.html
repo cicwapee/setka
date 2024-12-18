@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Турнірна сітка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0b1c3d, #050f26);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #fff;
+            font-size: 10px;
+            user-select: none;
+            animation: snowfall linear infinite;
+            opacity: 0.8; /* Slight transparency */
+        }
+        @keyframes snowfall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            width: 100%;
+            padding-left: 250px; /* Create space for the title and organizer section */
+        }
+        .bracket {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .round {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 15px;
+        }
+        .match {
+            width: 150px;
+            background-color: #1b2a4d;
+            border: 2px solid #2f4371;
+            margin: 15px 0;
+            text-align: center;
+            position: relative;
+            border-radius: 5px;
+            font-size: 12px;
+            padding: 8px 0;
+            color: #fff;
+        }
+        .match input {
+            width: 85%;
+            padding: 2px;
+            margin: 3px 0;
+            text-align: center;
+            border: 1px solid #555;
+            border-radius: 3px;
+            background-color: #111d42;
+            color: #fff;
+            font-size: 10px;
+        }
+        .line {
+            position: absolute;
+            background-color: #fff;
+        }
+        .line.horizontal {
+            width: 30px;
+            height: 2px;
+            top: 50%;
+            right: -30px;
+        }
+        .line.vertical {
+            width: 2px;
+            height: calc(100% + 30px);
+            top: -15px;
+            right: -30px;
+        }
+        .connector {
+            position: relative;
+        }
+        .connector::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: #fff;
+            top: 50%;
+            left: 100%;
+        }
+        .connector::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: calc(100% + 30px);
+            background-color: #fff;
+            left: 100%;
+            top: -15px;
+        }
+        .organizer-section {
+            position: fixed;
+            top: 180px; /* Adjusted to move it further down */
+            left: 20px; /* Aligns the organizer section to the left */
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Light glow effect */
+            width: 250px;
+        }
+        .organizer-section div {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .title {
+            font-size: 50px; /* Larger font size for the title */
+            font-weight: bold;
+            position: fixed;
+            top: 80px; /* Positioning the title */
+            left: 20px; /* Align to the left side */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .showmatchs-title {
+            font-size: 60px; /* Make the showmatchs title larger */
+            font-weight: bold;
+            margin-top: 20px; /* Added spacing between title and organizers */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Назва турніру -->
+    <div class="title">Турнірна сітка</div>
+
+    <!-- Назва організаторів -->
+    <div class="organizer-section">
+        <div class="showmatchs-title">showmatchs</div>
+        <div>organizers:</div>
+        <div>Cicwape192</div>
+        <div>Веля Голдикин</div>
+        <div>zaper1_</div>
+    </div>
+
+    <!-- Сніг -->
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = "&#10052;";
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            snowflake.style.fontSize = `${Math.random() * 8 + 8}px`; // Smaller snowflakes
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 10000);
+        }
+        setInterval(createSnowflake, 200); // Reduced snowfall frequency
+    </script>
+
+    <div class="container">
+        <div class="bracket">
+            <!-- Квартал фіналів -->
+            <div class="round">
+                <div class="match connector">
+                    <input type="text" placeholder="Команда 1">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+                <div class="match connector">
+                    <input type="text" placeholder="Команда 2">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+                <div class="match connector">
+                    <input type="text" placeholder="Команда 3">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+                <div class="match connector">
+                    <input type="text" placeholder="Команда 4">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+            </div>
+            <!-- Півфінали -->
+            <div class="round">
+                <div class="match connector">
+                    <input type="text" placeholder="Переможець 1">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+                <div class="match connector">
+                    <input type="text" placeholder="Переможець 2">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+            </div>
+            <!-- Фінал -->
+            <div class="round">
+                <div class="match">
+                    <input type="text" placeholder="Гранд фінал">
+                    <input type="text" placeholder="Гравець 1">
+                    <input type="text" placeholder="Гравець 2">
+                    <input type="text" placeholder="Гравець 3">
+                    <input type="text" placeholder="Гравець 4">
+                    <input type="text" placeholder="Гравець 5">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
